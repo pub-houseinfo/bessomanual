@@ -3,111 +3,121 @@
 <head>
   <meta charset="utf-8">
   <title>Besso姫路お掃除マニュアル</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-  
-  <!-- Reveal.js CSS -->
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/4.3.1/reset.min.css">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/4.3.1/reveal.min.css">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/4.3.1/theme/simple.min.css" id="theme">
-  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
   <style>
     /* -------------------------------------------
-       基本リセットとレスポンシブ設定
+       基本リセット
        ------------------------------------------- */
-    /* Reveal.jsのデフォルトの中央揃えを上書きし、全画面でスクロール可能にする */
-    .reveal .slides section,
-    .reveal .slides section.present {
-      height: 100%;
-      top: 0 !important;
-    }
-
-    .slide-wrapper {
-      width: 100%;
-      height: 100%;
-      max-width: 1200px;
-      margin: 0 auto;
-      padding: 70px 20px 40px; /* 上: 目次ボタン回避、下: ページ番号回避 */
+    * {
       box-sizing: border-box;
-      overflow-y: auto; /* はみ出した場合に縦スクロール可能にする */
-      -webkit-overflow-scrolling: touch;
-      display: flex;
-      flex-direction: column;
-      justify-content: flex-start; /* デフォルトは上から詰めて表示 */
     }
-
-    /* タイトル画面などを中央揃えにするためのクラス */
-    .slide-wrapper.center-content {
-      justify-content: center;
-      align-items: center;
+    html, body {
+      margin: 0;
+      padding: 0;
+      font-family: "Hiragino Kaku Gothic ProN", "ヒラギノ角ゴ ProN W3", Meiryo, sans-serif;
+      color: #333;
+      background: #fdfdfd;
+      line-height: 1.6;
+      -webkit-text-size-adjust: 100%;
     }
 
     /* -------------------------------------------
-       フォントサイズ（スマホ向けベース）
-       文字が大きすぎないように px 指定で調整
+       タイトル（ヘッダー）
        ------------------------------------------- */
-    .reveal h2 {
-      font-size: 28px;
-      font-weight: bold;
-      margin-bottom: 20px;
-      line-height: 1.4;
-      text-transform: none;
-    }
-    .reveal h3 {
-      font-size: 22px;
-      border-bottom: 2px solid #333;
-      padding-bottom: 8px;
-      margin-bottom: 15px;
-      line-height: 1.4;
-      text-transform: none;
-    }
-
-    .reveal .slide-content {
-      display: flex;
-      flex-direction: column; /* スマホは縦並び */
-      align-items: center;
-      gap: 15px;
-      width: 100%;
-    }
-
-    .reveal .slide-image {
-      width: 100%;
+    .page-header {
+      background: #e8412e;
+      color: #fff;
+      padding: 40px 20px;
       text-align: center;
     }
-    .reveal .slide-image img {
-      max-height: 35vh; /* 画像が大きくなりすぎないように制限 */
+    .page-header h1 {
+      margin: 0;
+      font-size: 24px;
+      line-height: 1.4;
+    }
+
+    /* -------------------------------------------
+       本体コンテナ
+       ------------------------------------------- */
+    .manual-body {
+      max-width: 800px;
+      margin: 0 auto;
+      padding: 20px 16px 80px;
+    }
+
+    /* -------------------------------------------
+       各セクション（1スライド分）
+       ------------------------------------------- */
+    .slide {
+      background: #fff;
+      border-radius: 12px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+      padding: 24px 18px;
+      margin-bottom: 24px;
+      scroll-margin-top: 70px; /* 固定ヘッダーぶん上にずらす */
+    }
+
+    .slide h2 {
+      font-size: 24px;
+      font-weight: bold;
+      margin: 0 0 16px;
+      line-height: 1.4;
+    }
+    .slide h3 {
+      font-size: 20px;
+      font-weight: bold;
+      border-bottom: 3px solid #e8412e;
+      padding-bottom: 10px;
+      margin: 0 0 16px;
+      line-height: 1.4;
+    }
+
+    .slide-image {
+      width: 100%;
+      text-align: center;
+      margin-bottom: 16px;
+    }
+    .slide-image img {
       max-width: 100%;
-      object-fit: contain;
+      height: auto;
       border: 1px solid #ddd;
       border-radius: 8px;
-      box-shadow: 0 4px 6px rgba(0,0,0,0.1);
-      margin: 0 auto;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.08);
     }
 
-    .reveal .slide-text {
-      width: 100%;
-      text-align: left;
+    .slide-text {
       font-size: 15px;
-      line-height: 1.6;
+      line-height: 1.7;
     }
-    .reveal .slide-text.small-text {
-      font-size: 13px;
+    .slide-text.small-text {
+      font-size: 14px;
     }
-    .reveal .slide-text p {
-      margin-bottom: 10px;
+    .slide-text p {
+      margin: 0 0 12px;
+    }
+    .slide-text p:last-child {
+      margin-bottom: 0;
     }
 
-    .reveal ul.check-list {
-      text-align: left;
+    ul.check-list {
       font-size: 15px;
-      line-height: 1.6;
-      display: block;
-      padding-left: 1.5em;
+      line-height: 1.7;
+      padding-left: 1.4em;
+      margin: 0;
     }
-    .reveal ul.check-list.small-text {
-      font-size: 13px;
+    ul.check-list.small-text {
+      font-size: 14px;
     }
-    .reveal ul.check-list li {
+    ul.check-list li {
       margin-bottom: 10px;
+    }
+    .slide-text ul {
+      padding-left: 1.4em;
+      margin: 0 0 12px;
+    }
+    .slide-text ul li {
+      margin-bottom: 6px;
     }
 
     .highlight {
@@ -115,89 +125,81 @@
       font-weight: bold;
     }
 
+    /* タイトル・フィニッシュ用の中央寄せ */
+    .slide.center {
+      text-align: center;
+      padding: 40px 18px;
+    }
     .footer-note {
       text-align: center;
-      font-size: 14px;
+      font-size: 13px;
       color: #666;
-      margin-top: 20px;
+      margin-top: 16px;
     }
 
     /* -------------------------------------------
-       目次スライド用のスタイル
+       目次セクション
        ------------------------------------------- */
     .toc-grid {
       display: grid;
       grid-template-columns: 1fr;
       gap: 10px;
-      margin-top: 15px;
-      text-align: left;
-      width: 100%;
+      margin-top: 12px;
     }
     .toc-grid a {
       display: block;
-      padding: 12px 15px;
-      background: #f9f9f9;
+      padding: 12px 14px;
+      background: #fafafa;
       border-radius: 8px;
       border-left: 6px solid #e8412e;
-      color: #333 !important;
+      color: #333;
       text-decoration: none;
       font-size: 14px;
       font-weight: bold;
-      transition: all 0.3s;
-      box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+      transition: background 0.2s;
     }
+    .toc-grid a:active,
     .toc-grid a:hover {
       background: #e8412e;
-      border-left-color: #b52b1b;
-      color: #fff !important;
+      color: #fff;
+    }
+    .toc-note {
+      font-size: 12px;
+      color: #666;
+      margin: 0 0 6px;
     }
 
     /* -------------------------------------------
-       PC・タブレット向け (768px以上)
+       PC・タブレット向け
        ------------------------------------------- */
     @media (min-width: 768px) {
-      .slide-wrapper {
-        padding: 80px 40px 60px;
-      }
-      .reveal h2 { font-size: 40px; }
-      .reveal h3 { font-size: 32px; margin-bottom: 25px; }
-      
-      .reveal .slide-content {
-        flex-direction: row; /* 横並び */
-        align-items: flex-start;
-        gap: 30px;
-      }
-      .reveal .slide-image { flex: 1.2; }
-      .reveal .slide-image img { max-height: 50vh; }
-      
-      .reveal .slide-text { flex: 1; font-size: 18px; }
-      .reveal .slide-text.small-text { font-size: 15px; }
-      
-      .reveal ul.check-list { font-size: 18px; }
-      .reveal ul.check-list.small-text { font-size: 15px; }
+      .page-header h1 { font-size: 32px; }
+      .manual-body { padding: 32px 24px 100px; }
+      .slide { padding: 32px 28px; margin-bottom: 32px; }
+      .slide h2 { font-size: 30px; }
+      .slide h3 { font-size: 26px; margin-bottom: 20px; }
+      .slide-text, ul.check-list { font-size: 17px; }
+      .slide-text.small-text, ul.check-list.small-text { font-size: 15px; }
+      .slide-image img { max-width: 600px; }
 
-      .toc-grid {
-        grid-template-columns: 1fr 1fr;
-        gap: 20px;
-      }
-      .toc-grid a { font-size: 16px; padding: 15px 20px; }
-      .footer-note { font-size: 16px; }
+      .toc-grid { grid-template-columns: 1fr 1fr; gap: 14px; }
+      .toc-grid a { font-size: 15px; padding: 14px 18px; }
     }
 
     /* -------------------------------------------
-       ハンバーガーメニュー（目次ボタン）のスタイル
+       目次ボタン（ハンバーガー）
        ------------------------------------------- */
     #toc-button {
       position: fixed;
-      top: 15px;
-      right: 15px;
+      top: 14px;
+      right: 14px;
       z-index: 30;
-      background: rgba(0, 0, 0, 0.6);
-      color: white;
+      background: rgba(0, 0, 0, 0.65);
+      color: #fff;
       border: none;
       border-radius: 8px;
-      padding: 10px 15px;
-      font-size: 16px;
+      padding: 10px 14px;
+      font-size: 15px;
       cursor: pointer;
       box-shadow: 0 2px 5px rgba(0,0,0,0.2);
     }
@@ -214,18 +216,14 @@
       transition: right 0.3s ease;
       overflow-y: auto;
       padding: 20px;
-      box-sizing: border-box;
-      font-family: sans-serif;
+      font-family: inherit;
     }
-    #toc-menu.open {
-      right: 0;
-    }
+    #toc-menu.open { right: 0; }
     #toc-menu h2 {
-      font-size: 20px;
-      margin-top: 0;
+      font-size: 18px;
+      margin: 0 0 14px;
       border-bottom: 2px solid #e8412e;
       padding-bottom: 10px;
-      color: #333;
     }
     #toc-menu ul {
       list-style: none;
@@ -233,38 +231,62 @@
       margin: 0;
     }
     #toc-menu li {
-      padding: 12px 0;
+      padding: 10px 0;
       border-bottom: 1px solid #eee;
     }
     #toc-menu li a {
       text-decoration: none;
       color: #333;
-      font-size: 15px;
+      font-size: 14px;
       display: block;
     }
-    #toc-menu li a:hover {
-      color: #e8412e;
-    }
+    #toc-menu li a:active { color: #e8412e; }
     #toc-close {
       position: absolute;
-      top: 15px;
-      right: 20px;
+      top: 12px;
+      right: 16px;
       font-size: 28px;
       background: none;
       border: none;
       color: #666;
       cursor: pointer;
     }
+    #toc-backdrop {
+      position: fixed;
+      top: 0; left: 0;
+      width: 100%; height: 100%;
+      background: rgba(0,0,0,0.4);
+      z-index: 35;
+      display: none;
+    }
+    #toc-backdrop.open { display: block; }
+
+    /* ページ先頭へ戻るボタン */
+    #to-top {
+      position: fixed;
+      bottom: 18px;
+      right: 14px;
+      z-index: 25;
+      background: rgba(0, 0, 0, 0.55);
+      color: #fff;
+      border: none;
+      border-radius: 50%;
+      width: 46px;
+      height: 46px;
+      font-size: 20px;
+      cursor: pointer;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+      display: none;
+    }
+    #to-top.show { display: block; }
 
     /* -------------------------------------------
-       パスワード画面のスタイル
+       パスワード画面
        ------------------------------------------- */
     #password-screen {
       position: fixed;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
+      top: 0; left: 0;
+      width: 100%; height: 100%;
       background: #fdfdfd;
       z-index: 9999;
       display: flex;
@@ -272,17 +294,15 @@
       justify-content: center;
       align-items: center;
       padding: 20px;
-      box-sizing: border-box;
     }
     #password-screen h2 {
-      font-size: 24px;
-      color: #333;
-      margin-bottom: 10px;
+      font-size: 22px;
+      margin: 0 0 8px;
     }
     #password-screen input {
       font-size: 20px;
       padding: 12px;
-      margin-bottom: 20px;
+      margin: 16px 0 16px;
       border: 1px solid #ccc;
       border-radius: 6px;
       width: 80%;
@@ -300,1122 +320,891 @@
       cursor: pointer;
       font-weight: bold;
     }
+    .pw-note {
+      font-size: 14px;
+      color: #666;
+      margin: 0;
+    }
+    .pw-error {
+      color: red;
+      margin-top: 14px;
+      font-size: 14px;
+      display: none;
+    }
   </style>
 </head>
 <body>
+
   <!-- パスワード画面 -->
   <div id="password-screen">
     <h2>マニュアルの閲覧</h2>
-    <p style="margin-bottom: 20px; font-size: 14px; color: #666;">パスワードを入力してください</p>
-    <!-- スマホで数字キーボードが出やすいように type="tel" に設定 -->
+    <p class="pw-note">パスワードを入力してください</p>
     <input type="tel" id="password-input" placeholder="パスワード" maxlength="4">
     <button id="password-submit">確認</button>
-    <p id="password-error" style="color: red; display: none; margin-top: 15px; font-size: 14px;">パスワードが間違っています</p>
+    <p id="password-error" class="pw-error">パスワードが間違っています</p>
   </div>
 
-  <!-- メインコンテンツ (初期状態は非表示) -->
-  <div id="main-content" style="display: none; height: 100%;">
-    <!-- 目次を開くボタン -->
-    <button id="toc-button">☰ 目次</button>
+  <!-- メインコンテンツ -->
+  <div id="main-content" style="display:none;">
 
-    <!-- 目次メニュー本体 -->
+    <button id="toc-button">☰ 目次</button>
+    <div id="toc-backdrop"></div>
     <div id="toc-menu">
       <button id="toc-close">×</button>
       <h2>マニュアル目次</h2>
       <ul id="toc-list"></ul>
     </div>
 
-    <div class="reveal">
-      <div class="slides">
+    <header class="page-header">
+      <h1>Besso姫路お掃除マニュアル</h1>
+    </header>
 
-        <!-- スライド 1: タイトル -->
-        <section>
-          <div class="slide-wrapper center-content">
-            <h2>Besso姫路お掃除マニュアル</h2>
-          </div>
-        </section>
+    <main class="manual-body">
 
-        <!-- スライド 2: 目次 -->
-        <section>
-          <div class="slide-wrapper">
-            <h3>マニュアル目次</h3>
-            <p style="font-size: 13px; color: #666; margin-bottom: 10px; text-align: left;">※タップすると各項目へジャンプします</p>
-            <div class="toc-grid">
-              <a href="javascript:void(0);" onclick="Reveal.slide(2);">1. 入室時の確認とカギ</a>
-              <a href="javascript:void(0);" onclick="Reveal.slide(10);">2. 掃除道具と備品の場所</a>
-              <a href="javascript:void(0);" onclick="Reveal.slide(14);">3. ベッドメイキング・寝室</a>
-              <a href="javascript:void(0);" onclick="Reveal.slide(31);">4. キッチン周り・食器・備品</a>
-              <a href="javascript:void(0);" onclick="Reveal.slide(44);">5. リビング・洗面所・お風呂</a>
-              <a href="javascript:void(0);" onclick="Reveal.slide(55);">6. 各エリアのチェックリスト</a>
-              <a href="javascript:void(0);" onclick="Reveal.slide(62);">7. 退室前の確認・前日準備</a>
-            </div>
-          </div>
-        </section>
+      <!-- 目次 -->
+      <section class="slide" id="toc">
+        <h3>マニュアル目次</h3>
+        <p class="toc-note">※タップすると各項目へジャンプします</p>
+        <div class="toc-grid">
+          <a href="#s3">1. 入室時の確認とカギ</a>
+          <a href="#s11">2. 掃除道具と備品の場所</a>
+          <a href="#s14">3. ベッドメイキング・寝室</a>
+          <a href="#s32">4. キッチン周り・食器・備品</a>
+          <a href="#s45">5. リビング・洗面所・お風呂</a>
+          <a href="#s56">6. 各エリアのチェックリスト</a>
+          <a href="#s63">7. 退室前の確認・前日準備</a>
+        </div>
+      </section>
 
-        <!-- スライド 3 -->
-        <section>
-          <div class="slide-wrapper">
-            <h3>入室時</h3>
-            <div class="slide-content">
-              <div class="slide-image">
-                <img src="images/slide-02.jpg" alt="入室時">
-              </div>
-              <div class="slide-text">
-                <p>扉にカギが設置されています</p>
-                <p>真っ黒な画面に手のひらをかざすと数字が出てきます</p>
-                <p>「<strong>5963※</strong>」と押すと扉が開きます</p>
-                <p class="highlight">注意：数字を押して「ピッ」と鳴らなければ反応していません</p>
-                <p>途中間違った場合は右端の「🏠」のマークを押すとリセットになります。始めからやりなおしてください。</p>
-              </div>
-            </div>
-          </div>
-        </section>
+      <!-- スライド 3 -->
+      <section class="slide" id="s3">
+        <h3>入室時</h3>
+        <div class="slide-image">
+          <img src="images/slide-02.jpg" alt="入室時">
+        </div>
+        <div class="slide-text">
+          <p>扉にカギが設置されています</p>
+          <p>真っ黒な画面に手のひらをかざすと数字が出てきます</p>
+          <p>「<strong>5963※</strong>」と押すと扉が開きます</p>
+          <p class="highlight">注意：数字を押して「ピッ」と鳴らなければ反応していません</p>
+          <p>途中間違った場合は右端の「🏠」のマークを押すとリセットになります。始めからやりなおしてください。</p>
+        </div>
+      </section>
 
-        <!-- スライド 4 -->
-        <section>
-          <div class="slide-wrapper">
-            <h3>入る前にドアホンで確認</h3>
-            <div class="slide-content">
-              <div class="slide-image">
-                <img src="images/slide-03.jpg" alt="入る前にドアホンで確認">
-              </div>
-              <div class="slide-text small-text">
-                <p><strong>11時チェックアウトですが</strong><br>無人案内ということもあり、まだお客様がいらっしゃる可能性があります。</p>
-                <p><strong>必ず、入る前にドアホン（四角い黒い方）で「ピンポン」でお客様が帰られた事を確認してから入ってください。</strong></p>
-                <p class="highlight">※もし、お客様がいらっしゃっても落ち着いて</p>
-                <p>「お掃除に来ました。11時がチェックアウトですので、チェックアウトお願いします。」と伝えて外で待機してください。</p>
-                <p>こちらが誤る（謝る）必要はありません。</p>
-              </div>
-            </div>
-          </div>
-        </section>
+      <!-- スライド 4 -->
+      <section class="slide" id="s4">
+        <h3>入る前にドアホンで確認</h3>
+        <div class="slide-image">
+          <img src="images/slide-03.jpg" alt="入る前にドアホンで確認">
+        </div>
+        <div class="slide-text small-text">
+          <p><strong>11時チェックアウトですが</strong><br>無人案内ということもあり、まだお客様がいらっしゃる可能性があります。</p>
+          <p><strong>必ず、入る前にドアホン（四角い黒い方）で「ピンポン」でお客様が帰られた事を確認してから入ってください。</strong></p>
+          <p class="highlight">※もし、お客様がいらっしゃっても落ち着いて</p>
+          <p>「お掃除に来ました。11時がチェックアウトですので、チェックアウトお願いします。」と伝えて外で待機してください。</p>
+          <p>こちらが誤る（謝る）必要はありません。</p>
+        </div>
+      </section>
 
       <!-- スライド 5 -->
-      <section>
-        <div class="slide-wrapper">
-          <h3>物入のカギの場所</h3>
-          <div class="slide-content">
-            <div class="slide-image">
-              <img src="images/slide-04.jpg" alt="物入のカギの場所">
-            </div>
-            <div class="slide-text">
-              <p>下駄箱は、取っ手が付いている1か所だけカギはかかっていません。</p>
-              <p>この中に全てが始まるカギが入っています(笑)</p>
-            </div>
-          </div>
+      <section class="slide" id="s5">
+        <h3>物入のカギの場所</h3>
+        <div class="slide-image">
+          <img src="images/slide-04.jpg" alt="物入のカギの場所">
+        </div>
+        <div class="slide-text">
+          <p>下駄箱は、取っ手が付いている1か所だけカギはかかっていません。</p>
+          <p>この中に全てが始まるカギが入っています(笑)</p>
         </div>
       </section>
 
       <!-- スライド 6 -->
-      <section>
-        <div class="slide-wrapper">
-          <h3>①のカギの置き場所</h3>
-          <div class="slide-content">
-            <div class="slide-image">
-              <img src="images/slide-05.jpg" alt="①のカギの置き場所">
-            </div>
-            <div class="slide-text">
-              <p>ここは、掃除の私たちだけが知る秘密の場所です。</p>
-              <p>下段の一番奥の右上にカギが吊るしてあります。</p>
-              <p>①のカギです。</p>
-            </div>
-          </div>
+      <section class="slide" id="s6">
+        <h3>①のカギの置き場所</h3>
+        <div class="slide-image">
+          <img src="images/slide-05.jpg" alt="①のカギの置き場所">
+        </div>
+        <div class="slide-text">
+          <p>ここは、掃除の私たちだけが知る秘密の場所です。</p>
+          <p>下段の一番奥の右上にカギが吊るしてあります。</p>
+          <p>①のカギです。</p>
         </div>
       </section>
 
       <!-- スライド 7 -->
-      <section>
-        <div class="slide-wrapper">
-          <h3>まず、①の1つ目のカギを発見したら</h3>
-          <div class="slide-content">
-            <div class="slide-image">
-              <img src="images/slide-06.jpg" alt="①の1つ目のカギ">
-            </div>
-            <div class="slide-text">
-              <p>①のカギで下駄箱のカギが開きます。</p>
-            </div>
-          </div>
+      <section class="slide" id="s7">
+        <h3>まず、①の1つ目のカギを発見したら</h3>
+        <div class="slide-image">
+          <img src="images/slide-06.jpg" alt="①の1つ目のカギ">
+        </div>
+        <div class="slide-text">
+          <p>①のカギで下駄箱のカギが開きます。</p>
         </div>
       </section>
 
       <!-- スライド 8 -->
-      <section>
-        <div class="slide-wrapper">
-          <h3>下駄箱の開け方</h3>
-          <div class="slide-content">
-            <div class="slide-image">
-              <img src="images/slide-07.jpg" alt="下駄箱の開け方">
-            </div>
-            <div class="slide-text">
-              <p>カギを開けても扉を引っ張る場所がありません。</p>
-              <p>お客さんが開けようとしても開かなくなってます。</p>
-              <p><strong>扉の下を持って開いてください。</strong></p>
-            </div>
-          </div>
+      <section class="slide" id="s8">
+        <h3>下駄箱の開け方</h3>
+        <div class="slide-image">
+          <img src="images/slide-07.jpg" alt="下駄箱の開け方">
+        </div>
+        <div class="slide-text">
+          <p>カギを開けても扉を引っ張る場所がありません。</p>
+          <p>お客さんが開けようとしても開かなくなってます。</p>
+          <p><strong>扉の下を持って開いてください。</strong></p>
         </div>
       </section>
 
       <!-- スライド 9 -->
-      <section>
-        <div class="slide-wrapper">
-          <h3>カギ付きの下駄箱の中</h3>
-          <div class="slide-content">
-            <div class="slide-image">
-              <img src="images/slide-08.jpg" alt="カギ付きの下駄箱の中">
-            </div>
-            <div class="slide-text small-text">
-              <p>ファスナー付きの袋に、備品：壁にかかっているホワイトボードのマーカー、マグネット。クリーニングの納品書なども入れておいてください。</p>
-              <p>掃除機の充電器、スリッパ（お掃除のときに自由に使ってください）が入っています。</p>
-              <p class="highlight">※かならず、帰るときに掃除機の充電器を充電して帰ってください。</p>
-            </div>
-          </div>
+      <section class="slide" id="s9">
+        <h3>カギ付きの下駄箱の中</h3>
+        <div class="slide-image">
+          <img src="images/slide-08.jpg" alt="カギ付きの下駄箱の中">
+        </div>
+        <div class="slide-text small-text">
+          <p>ファスナー付きの袋に、備品：壁にかかっているホワイトボードのマーカー、マグネット。クリーニングの納品書なども入れておいてください。</p>
+          <p>掃除機の充電器、スリッパ（お掃除のときに自由に使ってください）が入っています。</p>
+          <p class="highlight">※かならず、帰るときに掃除機の充電器を充電して帰ってください。</p>
         </div>
       </section>
 
       <!-- スライド 10 -->
-      <section>
-        <div class="slide-wrapper">
-          <h3>カギの場所</h3>
-          <div class="slide-content">
-            <div class="slide-image">
-              <img src="images/slide-09.jpg" alt="カギの場所">
-            </div>
-            <div class="slide-text">
-              <p><strong>白いカギ</strong>：奥の寝室の入口のカギ</p>
-              <p><strong>黒いカギ</strong>：南京錠で全ての物入れのカギ</p>
-              <p>鍵付きの下駄箱の壁に吊るしてます。</p>
-            </div>
-          </div>
+      <section class="slide" id="s10">
+        <h3>カギの場所</h3>
+        <div class="slide-image">
+          <img src="images/slide-09.jpg" alt="カギの場所">
+        </div>
+        <div class="slide-text">
+          <p><strong>白いカギ</strong>：奥の寝室の入口のカギ</p>
+          <p><strong>黒いカギ</strong>：南京錠で全ての物入れのカギ</p>
+          <p>鍵付きの下駄箱の壁に吊るしてます。</p>
         </div>
       </section>
 
       <!-- スライド 11 -->
-      <section>
-        <div class="slide-wrapper">
-          <h3>掃除道具入れ</h3>
-          <div class="slide-content">
-            <div class="slide-image">
-              <img src="images/slide-10.jpg" alt="掃除道具入れ">
-            </div>
-            <div class="slide-text">
-              <p>階段下の倉庫の中にお掃除一式（風呂掃除以外）が入っています。</p>
-            </div>
-          </div>
+      <section class="slide" id="s11">
+        <h3>掃除道具入れ</h3>
+        <div class="slide-image">
+          <img src="images/slide-10.jpg" alt="掃除道具入れ">
+        </div>
+        <div class="slide-text">
+          <p>階段下の倉庫の中にお掃除一式（風呂掃除以外）が入っています。</p>
         </div>
       </section>
 
       <!-- スライド 12 -->
-      <section>
-        <div class="slide-wrapper">
-          <h3>掃除道具カゴの中の備品（1）</h3>
-          <div class="slide-content">
-            <div class="slide-image">
-              <img src="images/slide-11.jpg" alt="掃除道具カゴの中の備品1">
-            </div>
-            <div class="slide-text small-text">
-              <p>かごの中に入っている物（ジップロックごとに入れています）</p>
-              <ul>
-                <li>45Lのゴミ袋（台所の大きなゴミ箱2つ用）</li>
-                <li>10Lのゴミ袋（リビング、寝室のゴミ箱用）</li>
-                <li>洗面所（脱衣場用）の小さい袋</li>
-                <li>トイレのサニタリー用の黒い袋</li>
-                <li>キッチン流しの排水口用のネット</li>
-                <li>キッチンの食器洗いのスポンジ</li>
-                <li>流しの三角コーナーの水切りフィルター</li>
-                <li>拭き掃除用の乾いた使い捨てペーパー、クイックルドライペーパー</li>
-              </ul>
-              <p class="highlight">備品が無くなったら連絡をしてください。あるいは、購入後領収書を渡してください。</p>
-            </div>
-          </div>
+      <section class="slide" id="s12">
+        <h3>掃除道具カゴの中の備品（1）</h3>
+        <div class="slide-image">
+          <img src="images/slide-11.jpg" alt="掃除道具カゴの中の備品1">
+        </div>
+        <div class="slide-text small-text">
+          <p>かごの中に入っている物（ジップロックごとに入れています）</p>
+          <ul>
+            <li>45Lのゴミ袋（台所の大きなゴミ箱2つ用）</li>
+            <li>10Lのゴミ袋（リビング、寝室のゴミ箱用）</li>
+            <li>洗面所（脱衣場用）の小さい袋</li>
+            <li>トイレのサニタリー用の黒い袋</li>
+            <li>キッチン流しの排水口用のネット</li>
+            <li>キッチンの食器洗いのスポンジ</li>
+            <li>流しの三角コーナーの水切りフィルター</li>
+            <li>拭き掃除用の乾いた使い捨てペーパー、クイックルドライペーパー</li>
+          </ul>
+          <p class="highlight">備品が無くなったら連絡をしてください。あるいは、購入後領収書を渡してください。</p>
         </div>
       </section>
 
       <!-- スライド 13 -->
-      <section>
-        <div class="slide-wrapper">
-          <h3>掃除道具カゴの中の備品（2）</h3>
-          <div class="slide-content">
-            <div class="slide-image">
-              <img src="images/slide-12.jpg" alt="掃除道具カゴの中の備品2">
-            </div>
-            <div class="slide-text small-text">
-              <p>かごの中に入っている物</p>
-              <ul>
-                <li>ファブリーズ（焼肉等のにおいが残りやすいので）</li>
-                <li>トイレマジックリン</li>
-                <li>キッチンマジックリン（キッチン周りの油汚れ用）</li>
-                <li>キッチンハイター（排水口の汚れや、食器、まな板の黄ばみ用）</li>
-                <li>クリスタ（食洗器を使う時に使う）</li>
-                <li>食器用洗剤キュキュット（詰め替え用）</li>
-                <li>サッシ掃除用モップ</li>
-                <li>長細い箱（コーヒーミル掃除用歯ブラシ、鍋のタワシ、シール等）</li>
-                <li>粘着シール付きコロコロ</li>
-                <li>フローリング仕上げ用のウェットシート</li>
-              </ul>
-              <p class="highlight">備品が無くなったら連絡をしてください。あるいは、購入後領収書を渡してください。</p>
-            </div>
-          </div>
+      <section class="slide" id="s13">
+        <h3>掃除道具カゴの中の備品（2）</h3>
+        <div class="slide-image">
+          <img src="images/slide-12.jpg" alt="掃除道具カゴの中の備品2">
+        </div>
+        <div class="slide-text small-text">
+          <p>かごの中に入っている物</p>
+          <ul>
+            <li>ファブリーズ（焼肉等のにおいが残りやすいので）</li>
+            <li>トイレマジックリン</li>
+            <li>キッチンマジックリン（キッチン周りの油汚れ用）</li>
+            <li>キッチンハイター（排水口の汚れや、食器、まな板の黄ばみ用）</li>
+            <li>クリスタ（食洗器を使う時に使う）</li>
+            <li>食器用洗剤キュキュット（詰め替え用）</li>
+            <li>サッシ掃除用モップ</li>
+            <li>長細い箱（コーヒーミル掃除用歯ブラシ、鍋のタワシ、シール等）</li>
+            <li>粘着シール付きコロコロ</li>
+            <li>フローリング仕上げ用のウェットシート</li>
+          </ul>
+          <p class="highlight">備品が無くなったら連絡をしてください。あるいは、購入後領収書を渡してください。</p>
         </div>
       </section>
 
       <!-- スライド 14 -->
-      <section>
-        <div class="slide-wrapper">
-          <h3>2人宿泊の場合</h3>
-          <div class="slide-content">
-            <div class="slide-image">
-              <img src="images/slide-13.jpg" alt="2人宿泊の場合">
-            </div>
-            <div class="slide-text">
-              <p>次の宿泊予定者が2名の場合</p>
-              <p>下駄箱の袋に入っているカギをかけ、「2名様利用時はこちらの寝室は閉鎖いたします」の札を掛けてください。</p>
-            </div>
-          </div>
+      <section class="slide" id="s14">
+        <h3>2人宿泊の場合</h3>
+        <div class="slide-image">
+          <img src="images/slide-13.jpg" alt="2人宿泊の場合">
+        </div>
+        <div class="slide-text">
+          <p>次の宿泊予定者が2名の場合</p>
+          <p>下駄箱の袋に入っているカギをかけ、「2名様利用時はこちらの寝室は閉鎖いたします」の札を掛けてください。</p>
         </div>
       </section>
 
       <!-- スライド 15 -->
-      <section>
-        <div class="slide-wrapper">
-          <h3>ベッドメイキング</h3>
-          <div class="slide-content">
-            <div class="slide-image">
-              <img src="images/slide-14.jpg" alt="ベッドメイキング">
-            </div>
-            <div class="slide-text small-text">
-              <p>ベッドメイキングは、目視で汚れが無ければ、掛布団のカバー、ベッドのシーツ、枕のカバーを1枚ずつ剥がします。</p>
-              <p>奥の寝室に鍵付きの物入れがあるので、そこにカバーが全部入っているので付け替えてください。</p>
-              <p class="highlight">■シーツの中まで汚れがある場合</p>
-              <p>枕カバーの中にもう一枚ファスナー付きのカバー&枕、ベッドマットの上のベージュの防水マット、掛布団は汚れがある場合は、シーツと同じくクリーニングに出します。奥の寝室にあるクローゼットから予備を使ってください。</p>
-            </div>
-          </div>
+      <section class="slide" id="s15">
+        <h3>ベッドメイキング</h3>
+        <div class="slide-image">
+          <img src="images/slide-14.jpg" alt="ベッドメイキング">
+        </div>
+        <div class="slide-text small-text">
+          <p>ベッドメイキングは、目視で汚れが無ければ、掛布団のカバー、ベッドのシーツ、枕のカバーを1枚ずつ剥がします。</p>
+          <p>奥の寝室に鍵付きの物入れがあるので、そこにカバーが全部入っているので付け替えてください。</p>
+          <p class="highlight">■シーツの中まで汚れがある場合</p>
+          <p>枕カバーの中にもう一枚ファスナー付きのカバー&枕、ベッドマットの上のベージュの防水マット、掛布団は汚れがある場合は、シーツと同じくクリーニングに出します。奥の寝室にあるクローゼットから予備を使ってください。</p>
         </div>
       </section>
 
       <!-- スライド 16 -->
-      <section>
-        <div class="slide-wrapper">
-          <h3>掛布団のシーツの向き（1）</h3>
-          <div class="slide-content">
-            <div class="slide-image">
-              <img src="images/slide-15.jpg" alt="掛布団のシーツの向き1">
-            </div>
-            <div class="slide-text">
-              <p>中の布団についているタグは足もとに来るようにして、シーツは長い方向の片方が開いています。</p>
-              <p>開いている方は、お客様が入ってきたときに見えないように壁際に向ける。</p>
-            </div>
-          </div>
+      <section class="slide" id="s16">
+        <h3>掛布団のシーツの向き（1）</h3>
+        <div class="slide-image">
+          <img src="images/slide-15.jpg" alt="掛布団のシーツの向き1">
+        </div>
+        <div class="slide-text">
+          <p>中の布団についているタグは足もとに来るようにして、シーツは長い方向の片方が開いています。</p>
+          <p>開いている方は、お客様が入ってきたときに見えないように壁際に向ける。</p>
         </div>
       </section>
 
       <!-- スライド 17 -->
-      <section>
-        <div class="slide-wrapper">
-          <h3>掛布団のシーツの向き（2）</h3>
-          <div class="slide-content">
-            <div class="slide-image">
-              <img src="images/slide-16.jpg" alt="掛布団のシーツの向き2">
-            </div>
-            <div class="slide-text">
-              <p>シーツの縫い目が裏になるように、上から見えないようにセッティングする。</p>
-            </div>
-          </div>
+      <section class="slide" id="s17">
+        <h3>掛布団のシーツの向き（2）</h3>
+        <div class="slide-image">
+          <img src="images/slide-16.jpg" alt="掛布団のシーツの向き2">
+        </div>
+        <div class="slide-text">
+          <p>シーツの縫い目が裏になるように、上から見えないようにセッティングする。</p>
         </div>
       </section>
 
       <!-- スライド 18 -->
-      <section>
-        <div class="slide-wrapper">
-          <h3>枕の置き方</h3>
-          <div class="slide-content">
-            <div class="slide-image">
-              <img src="images/slide-17.jpg" alt="枕の置き方">
-            </div>
-            <div class="slide-text">
-              <p>枕カバーは、端を枕の片方に押し込む。</p>
-              <p>開いている方は、壁際に向けてセッティング。</p>
-              <p>枕をベッドの上に置いてから、掛布団をかぶせる。</p>
-            </div>
-          </div>
+      <section class="slide" id="s18">
+        <h3>枕の置き方</h3>
+        <div class="slide-image">
+          <img src="images/slide-17.jpg" alt="枕の置き方">
+        </div>
+        <div class="slide-text">
+          <p>枕カバーは、端を枕の片方に押し込む。</p>
+          <p>開いている方は、壁際に向けてセッティング。</p>
+          <p>枕をベッドの上に置いてから、掛布団をかぶせる。</p>
         </div>
       </section>
 
       <!-- スライド 19 -->
-      <section>
-        <div class="slide-wrapper">
-          <h3>ベッドメイキング完成図</h3>
-          <div class="slide-content">
-            <div class="slide-image">
-              <img src="images/slide-18.jpg" alt="ベッドメイキング完成図">
-            </div>
-            <div class="slide-text">
-              <p>掛布団は、ピンと伸ばしておく。</p>
-            </div>
-          </div>
+      <section class="slide" id="s19">
+        <h3>ベッドメイキング完成図</h3>
+        <div class="slide-image">
+          <img src="images/slide-18.jpg" alt="ベッドメイキング完成図">
+        </div>
+        <div class="slide-text">
+          <p>掛布団は、ピンと伸ばしておく。</p>
         </div>
       </section>
 
       <!-- スライド 20 -->
-      <section>
-        <div class="slide-wrapper">
-          <h3>奥のベッドルームの物入れ</h3>
-          <div class="slide-content">
-            <div class="slide-image">
-              <img src="images/slide-19.jpg" alt="奥のベッドルームの物入れ">
-            </div>
-            <div class="slide-text">
-              <p>ここに、シーツ、カバー類が入っています。</p>
-              <p>ここも、物入のカギで開けてください。</p>
-            </div>
-          </div>
+      <section class="slide" id="s20">
+        <h3>奥のベッドルームの物入れ</h3>
+        <div class="slide-image">
+          <img src="images/slide-19.jpg" alt="奥のベッドルームの物入れ">
+        </div>
+        <div class="slide-text">
+          <p>ここに、シーツ、カバー類が入っています。</p>
+          <p>ここも、物入のカギで開けてください。</p>
         </div>
       </section>
 
       <!-- スライド 21 -->
-      <section>
-        <div class="slide-wrapper">
-          <h3>ティッシュの置き場所</h3>
-          <div class="slide-content">
-            <div class="slide-image">
-              <img src="images/slide-20.jpg" alt="ティッシュの置き場所">
-            </div>
-            <div class="slide-text">
-              <p>ティッシュの設置場所です。</p>
-              <p>ティッシュが見つからない場合は、補充または、連絡お願いします。</p>
-            </div>
-          </div>
+      <section class="slide" id="s21">
+        <h3>ティッシュの置き場所</h3>
+        <div class="slide-image">
+          <img src="images/slide-20.jpg" alt="ティッシュの置き場所">
+        </div>
+        <div class="slide-text">
+          <p>ティッシュの設置場所です。</p>
+          <p>ティッシュが見つからない場合は、補充または、連絡お願いします。</p>
         </div>
       </section>
 
       <!-- スライド 22 -->
-      <section>
-        <div class="slide-wrapper">
-          <h3>寝室のごみ箱（2ベッドの時）</h3>
-          <div class="slide-content">
-            <div class="slide-image">
-              <img src="images/slide-21.jpg" alt="寝室のごみ箱（2ベッドの時）">
-            </div>
-            <div class="slide-text">
-              <p>寝室のごみ箱は、ベッドとベッドの間に設置。</p>
-              <p>ゴミ袋も必ず設置、ごみ袋は10L用。</p>
-            </div>
-          </div>
+      <section class="slide" id="s22">
+        <h3>寝室のごみ箱（2ベッドの時）</h3>
+        <div class="slide-image">
+          <img src="images/slide-21.jpg" alt="寝室のごみ箱（2ベッドの時）">
+        </div>
+        <div class="slide-text">
+          <p>寝室のごみ箱は、ベッドとベッドの間に設置。</p>
+          <p>ゴミ袋も必ず設置、ごみ袋は10L用。</p>
         </div>
       </section>
 
       <!-- スライド 23 -->
-      <section>
-        <div class="slide-wrapper">
-          <h3>寝室のごみ箱（3ベッドの時）</h3>
-          <div class="slide-content">
-            <div class="slide-image">
-              <img src="images/slide-22.jpg" alt="寝室のごみ箱（3ベッドの時）">
-            </div>
-            <div class="slide-text small-text">
-              <p>3ベッドの時はベッドの間が狭いので、ごみ箱は壁際に設置する。</p>
-              <p>夏場は、蚊取り用ベープも入口側の部屋のゴミ箱の横に一緒に置く。</p>
-              <p>ゴミ袋も必ず設置、ごみ袋は10L用。</p>
-              <p>※写真に写っているタオルは、洗面所に設置に変更。</p>
-            </div>
-          </div>
+      <section class="slide" id="s23">
+        <h3>寝室のごみ箱（3ベッドの時）</h3>
+        <div class="slide-image">
+          <img src="images/slide-22.jpg" alt="寝室のごみ箱（3ベッドの時）">
+        </div>
+        <div class="slide-text small-text">
+          <p>3ベッドの時はベッドの間が狭いので、ごみ箱は壁際に設置する。</p>
+          <p>夏場は、蚊取り用ベープも入口側の部屋のゴミ箱の横に一緒に置く。</p>
+          <p>ゴミ袋も必ず設置、ごみ袋は10L用。</p>
+          <p>※写真に写っているタオルは、洗面所に設置に変更。</p>
         </div>
       </section>
 
       <!-- スライド 24 -->
-      <section>
-        <div class="slide-wrapper">
-          <h3>バスタオルの向き</h3>
-          <div class="slide-content">
-            <div class="slide-image">
-              <img src="images/slide-23.jpg" alt="バスタオルの向き">
-            </div>
-            <div class="slide-text">
-              <p>バスタオルを3つ折りにするときに、汚れが無いか確認。</p>
-              <p>折る向きは、端の縫い目が中に入るように折る。</p>
-              <p>三つ折りの端が壁際に向くように置く。</p>
-            </div>
-          </div>
+      <section class="slide" id="s24">
+        <h3>バスタオルの向き</h3>
+        <div class="slide-image">
+          <img src="images/slide-23.jpg" alt="バスタオルの向き">
+        </div>
+        <div class="slide-text">
+          <p>バスタオルを3つ折りにするときに、汚れが無いか確認。</p>
+          <p>折る向きは、端の縫い目が中に入るように折る。</p>
+          <p>三つ折りの端が壁際に向くように置く。</p>
         </div>
       </section>
 
       <!-- スライド 25 -->
-      <section>
-        <div class="slide-wrapper">
-          <h3>ガウンの確認</h3>
-          <div class="slide-content">
-            <div class="slide-image">
-              <img src="images/slide-24.jpg" alt="ガウンの確認">
-            </div>
-            <div class="slide-text">
-              <p>人数分のガウン掛かっているか、確認。</p>
-              <p>前の人が使っていなくて、多い場合は、寝室の物入れのクローゼットに掛けておく。</p>
-            </div>
-          </div>
+      <section class="slide" id="s25">
+        <h3>ガウンの確認</h3>
+        <div class="slide-image">
+          <img src="images/slide-24.jpg" alt="ガウンの確認">
+        </div>
+        <div class="slide-text">
+          <p>人数分のガウン掛かっているか、確認。</p>
+          <p>前の人が使っていなくて、多い場合は、寝室の物入れのクローゼットに掛けておく。</p>
         </div>
       </section>
 
       <!-- スライド 26 -->
-      <section>
-        <div class="slide-wrapper">
-          <h3>ガウンのチェック</h3>
-          <div class="slide-content">
-            <div class="slide-image">
-              <img src="images/slide-25.jpg" alt="ガウンのチェック">
-            </div>
-            <div class="slide-text">
-              <p>クリーニングから戻ってきたガウンがたまにボタンが取れています。</p>
-              <p>ボタンが5つあるか確認する。</p>
-            </div>
-          </div>
+      <section class="slide" id="s26">
+        <h3>ガウンのチェック</h3>
+        <div class="slide-image">
+          <img src="images/slide-25.jpg" alt="ガウンのチェック">
+        </div>
+        <div class="slide-text">
+          <p>クリーニングから戻ってきたガウンがたまにボタンが取れています。</p>
+          <p>ボタンが5つあるか確認する。</p>
         </div>
       </section>
 
       <!-- スライド 27 -->
-      <section>
-        <div class="slide-wrapper">
-          <h3>5人宿泊の場合のベッドセッティング</h3>
-          <div class="slide-content">
-            <div class="slide-image">
-              <img src="images/slide-26.jpg" alt="5人宿泊の場合のベッドセッティング">
-            </div>
-            <div class="slide-text small-text">
-              <p>5人宿泊の場合は、手前のお部屋（鍵のかからない部屋）にベッドを3つセッティングしてください。</p>
-              <p>奥の部屋を2セットにしておいた方が、シーツ等を取り出す場合に物入の開閉がしやすいと思います。</p>
-              <p class="highlight">※タオルはベッドに設置しない。洗面所に設置。</p>
-            </div>
-          </div>
+      <section class="slide" id="s27">
+        <h3>5人宿泊の場合のベッドセッティング</h3>
+        <div class="slide-image">
+          <img src="images/slide-26.jpg" alt="5人宿泊の場合のベッドセッティング">
+        </div>
+        <div class="slide-text small-text">
+          <p>5人宿泊の場合は、手前のお部屋（鍵のかからない部屋）にベッドを3つセッティングしてください。</p>
+          <p>奥の部屋を2セットにしておいた方が、シーツ等を取り出す場合に物入の開閉がしやすいと思います。</p>
+          <p class="highlight">※タオルはベッドに設置しない。洗面所に設置。</p>
         </div>
       </section>
 
       <!-- スライド 28 -->
-      <section>
-        <div class="slide-wrapper">
-          <h3>2人、3人宿泊の場合のベッドセッティング</h3>
-          <div class="slide-content">
-            <div class="slide-image">
-              <img src="images/slide-27.jpg" alt="2人、3人宿泊の場合のベッドセッティング">
-            </div>
-            <div class="slide-text">
-              <p><strong>●2人宿泊の場合も</strong><br>奥の部屋のベッドは、2セットセッティングしておいてください。手前、奥、2セットずつセッティング。</p>
-              <p><strong>●3人宿泊の場合も</strong><br>4セットのセッティング。</p>
-            </div>
-          </div>
+      <section class="slide" id="s28">
+        <h3>2人、3人宿泊の場合のベッドセッティング</h3>
+        <div class="slide-image">
+          <img src="images/slide-27.jpg" alt="2人、3人宿泊の場合のベッドセッティング">
+        </div>
+        <div class="slide-text">
+          <p><strong>●2人宿泊の場合も</strong><br>奥の部屋のベッドは、2セットセッティングしておいてください。手前、奥、2セットずつセッティング。</p>
+          <p><strong>●3人宿泊の場合も</strong><br>4セットのセッティング。</p>
         </div>
       </section>
 
       <!-- スライド 29 -->
-      <section>
-        <div class="slide-wrapper">
-          <h3>使い捨てスリッパ</h3>
-          <div class="slide-content">
-            <div class="slide-image">
-              <img src="images/slide-28.jpg" alt="使い捨てスリッパ">
-            </div>
-            <div class="slide-text">
-              <p>使い捨てスリッパは、以前はベッドの上に置いていましたが</p>
-              <p><strong>玄関に人数分置くように</strong>お願いします。</p>
-            </div>
-          </div>
+      <section class="slide" id="s29">
+        <h3>使い捨てスリッパ</h3>
+        <div class="slide-image">
+          <img src="images/slide-28.jpg" alt="使い捨てスリッパ">
+        </div>
+        <div class="slide-text">
+          <p>使い捨てスリッパは、以前はベッドの上に置いていましたが</p>
+          <p><strong>玄関に人数分置くように</strong>お願いします。</p>
         </div>
       </section>
 
       <!-- スライド 30 -->
-      <section>
-        <div class="slide-wrapper">
-          <h3>洗濯洗剤、柔軟剤</h3>
-          <div class="slide-content">
-            <div class="slide-image">
-              <img src="images/slide-29.jpg" alt="洗濯洗剤、柔軟剤">
-            </div>
-            <div class="slide-text">
-              <p>以前は洗濯機の上に置いていましたが</p>
-              <p>洗面所の洗濯機側の鏡内の収納ボックスに洗濯洗剤、柔軟剤を置いてください。</p>
-            </div>
-          </div>
+      <section class="slide" id="s30">
+        <h3>洗濯洗剤、柔軟剤</h3>
+        <div class="slide-image">
+          <img src="images/slide-29.jpg" alt="洗濯洗剤、柔軟剤">
+        </div>
+        <div class="slide-text">
+          <p>以前は洗濯機の上に置いていましたが</p>
+          <p>洗面所の洗濯機側の鏡内の収納ボックスに洗濯洗剤、柔軟剤を置いてください。</p>
         </div>
       </section>
 
       <!-- スライド 31 -->
-      <section>
-        <div class="slide-wrapper">
-          <h3>ドライヤー</h3>
-          <div class="slide-content">
-            <div class="slide-image">
-              <img src="images/slide-30.jpg" alt="ドライヤー">
-            </div>
-            <div class="slide-text">
-              <p>洗濯機にドライヤーケースを磁石で設置しています。</p>
-              <p>そこに収納してください。</p>
-            </div>
-          </div>
+      <section class="slide" id="s31">
+        <h3>ドライヤー</h3>
+        <div class="slide-image">
+          <img src="images/slide-30.jpg" alt="ドライヤー">
+        </div>
+        <div class="slide-text">
+          <p>洗濯機にドライヤーケースを磁石で設置しています。</p>
+          <p>そこに収納してください。</p>
         </div>
       </section>
 
       <!-- スライド 32 -->
-      <section>
-        <div class="slide-wrapper">
-          <h3>冷蔵庫の確認</h3>
-          <div class="slide-content">
-            <div class="slide-image">
-              <img src="images/slide-31.jpg" alt="冷蔵庫の確認">
-            </div>
-            <div class="slide-text small-text">
-              <p>2階に上がったら、まず冷蔵庫を開けておいてください。</p>
-              <p>しずくが冷蔵庫の内部で凍っていたり、手の指紋がついたまま凍っています。</p>
-              <p>拭き取っても取れないので、扉を開けて、凍っているのを溶かしてから拭くと綺麗になります。</p>
-            </div>
-          </div>
+      <section class="slide" id="s32">
+        <h3>冷蔵庫の確認</h3>
+        <div class="slide-image">
+          <img src="images/slide-31.jpg" alt="冷蔵庫の確認">
+        </div>
+        <div class="slide-text small-text">
+          <p>2階に上がったら、まず冷蔵庫を開けておいてください。</p>
+          <p>しずくが冷蔵庫の内部で凍っていたり、手の指紋がついたまま凍っています。</p>
+          <p>拭き取っても取れないので、扉を開けて、凍っているのを溶かしてから拭くと綺麗になります。</p>
         </div>
       </section>
 
       <!-- スライド 33 -->
-      <section>
-        <div class="slide-wrapper">
-          <h3>キッチンの流しの下引き出し</h3>
-          <div class="slide-content">
-            <div class="slide-image">
-              <img src="images/slide-32.jpg" alt="キッチンの流しの下引き出し">
-            </div>
-            <div class="slide-text">
-              <p>並べ方と無くなっていないかのチェック</p>
-              <ul>
-                <li>テフロンのフライパン大、小の2つ</li>
-                <li>電気付きのお鍋</li>
-                <li>やかん</li>
-              </ul>
-            </div>
-          </div>
+      <section class="slide" id="s33">
+        <h3>キッチンの流しの下引き出し</h3>
+        <div class="slide-image">
+          <img src="images/slide-32.jpg" alt="キッチンの流しの下引き出し">
+        </div>
+        <div class="slide-text">
+          <p>並べ方と無くなっていないかのチェック</p>
+          <ul>
+            <li>テフロンのフライパン大、小の2つ</li>
+            <li>電気付きのお鍋</li>
+            <li>やかん</li>
+          </ul>
         </div>
       </section>
 
       <!-- スライド 34 -->
-      <section>
-        <div class="slide-wrapper">
-          <h3>キッチン壁側引き出し 右1段目</h3>
-          <div class="slide-content">
-            <div class="slide-image">
-              <img src="images/slide-33.jpg" alt="キッチン壁側引き出し 右1段目">
-            </div>
-            <div class="slide-text small-text">
-              <ul>
-                <li>大スプーン、小スプーン、フォーク、各6本ずつあるか確認</li>
-                <li>大皿、中皿、サラダボウル</li>
-                <li>氷入れ容器</li>
-                <li>水切りボール</li>
-                <li>しゃもじ、栓抜き、ワイン開け、皮むきピーラー</li>
-              </ul>
-            </div>
-          </div>
+      <section class="slide" id="s34">
+        <h3>キッチン壁側引き出し 右1段目</h3>
+        <div class="slide-image">
+          <img src="images/slide-33.jpg" alt="キッチン壁側引き出し 右1段目">
+        </div>
+        <div class="slide-text small-text">
+          <ul>
+            <li>大スプーン、小スプーン、フォーク、各6本ずつあるか確認</li>
+            <li>大皿、中皿、サラダボウル</li>
+            <li>氷入れ容器</li>
+            <li>水切りボール</li>
+            <li>しゃもじ、栓抜き、ワイン開け、皮むきピーラー</li>
+          </ul>
         </div>
       </section>
 
       <!-- スライド 35 -->
-      <section>
-        <div class="slide-wrapper">
-          <h3>キッチン壁側引き出し 右2段目</h3>
-          <div class="slide-content">
-            <div class="slide-image">
-              <img src="images/slide-34.jpg" alt="キッチン壁側引き出し 右2段目">
-            </div>
-            <div class="slide-text">
-              <ul>
-                <li>お皿、大、中、小 各6枚ずつ</li>
-                <li>ボウル大・中・小 各6枚ずつ</li>
-                <li>お椀 6枚</li>
-              </ul>
-            </div>
-          </div>
+      <section class="slide" id="s35">
+        <h3>キッチン壁側引き出し 右2段目</h3>
+        <div class="slide-image">
+          <img src="images/slide-34.jpg" alt="キッチン壁側引き出し 右2段目">
+        </div>
+        <div class="slide-text">
+          <ul>
+            <li>お皿、大、中、小 各6枚ずつ</li>
+            <li>ボウル大・中・小 各6枚ずつ</li>
+            <li>お椀 6枚</li>
+          </ul>
         </div>
       </section>
 
       <!-- スライド 36 -->
-      <section>
-        <div class="slide-wrapper">
-          <h3>キッチン壁側引き出し 右3段目</h3>
-          <div class="slide-content">
-            <div class="slide-image">
-              <img src="images/slide-35.jpg" alt="キッチン壁側引き出し 右3段目">
-            </div>
-            <div class="slide-text">
-              <p>クッキングシート、サランラップ、アルミホイル、キッチンペーパー</p>
-              <p>無くなっていないか、中身の量のチェック。</p>
-            </div>
-          </div>
+      <section class="slide" id="s36">
+        <h3>キッチン壁側引き出し 右3段目</h3>
+        <div class="slide-image">
+          <img src="images/slide-35.jpg" alt="キッチン壁側引き出し 右3段目">
+        </div>
+        <div class="slide-text">
+          <p>クッキングシート、サランラップ、アルミホイル、キッチンペーパー</p>
+          <p>無くなっていないか、中身の量のチェック。</p>
         </div>
       </section>
 
       <!-- スライド 37 -->
-      <section>
-        <div class="slide-wrapper">
-          <h3>キッチン壁側引き出し 左1段目</h3>
-          <div class="slide-content">
-            <div class="slide-image">
-              <img src="images/slide-36.jpg" alt="キッチン壁側引き出し 左1段目">
-            </div>
-            <div class="slide-text">
-              <p>コーヒーカップ & ソーサ―</p>
-              <p>各6客セットになっているかチェック。</p>
-            </div>
-          </div>
+      <section class="slide" id="s37">
+        <h3>キッチン壁側引き出し 左1段目</h3>
+        <div class="slide-image">
+          <img src="images/slide-36.jpg" alt="キッチン壁側引き出し 左1段目">
+        </div>
+        <div class="slide-text">
+          <p>コーヒーカップ & ソーサ―</p>
+          <p>各6客セットになっているかチェック。</p>
         </div>
       </section>
 
       <!-- スライド 38 -->
-      <section>
-        <div class="slide-wrapper">
-          <h3>キッチン壁側引き出し 左2段目</h3>
-          <div class="slide-content">
-            <div class="slide-image">
-              <img src="images/slide-37.jpg" alt="キッチン壁側引き出し 左2段目">
-            </div>
-            <div class="slide-text">
-              <p>ガラスコップ</p>
-              <p>ワイン用グラス6客、ソフトドリンク用6客</p>
-            </div>
-          </div>
+      <section class="slide" id="s38">
+        <h3>キッチン壁側引き出し 左2段目</h3>
+        <div class="slide-image">
+          <img src="images/slide-37.jpg" alt="キッチン壁側引き出し 左2段目">
+        </div>
+        <div class="slide-text">
+          <p>ガラスコップ</p>
+          <p>ワイン用グラス6客、ソフトドリンク用6客</p>
         </div>
       </section>
 
       <!-- スライド 39 -->
-      <section>
-        <div class="slide-wrapper">
-          <h3>キッチン壁側引き出し 左3段目</h3>
-          <div class="slide-content">
-            <div class="slide-image">
-              <img src="images/slide-38.jpg" alt="キッチン壁側引き出し 左3段目">
-            </div>
-            <div class="slide-text">
-              <p>ホットプレート</p>
-              <p>中が汚れていないかチェック。</p>
-            </div>
-          </div>
+      <section class="slide" id="s39">
+        <h3>キッチン壁側引き出し 左3段目</h3>
+        <div class="slide-image">
+          <img src="images/slide-38.jpg" alt="キッチン壁側引き出し 左3段目">
+        </div>
+        <div class="slide-text">
+          <p>ホットプレート</p>
+          <p>中が汚れていないかチェック。</p>
         </div>
       </section>
 
       <!-- スライド 40 -->
-      <section>
-        <div class="slide-wrapper">
-          <h3>ホットプレートの中</h3>
-          <div class="slide-content">
-            <div class="slide-image">
-              <img src="images/slide-39.jpg" alt="ホットプレートの中">
-            </div>
-            <div class="slide-text small-text">
-              <p>ホットプレートの中に、平鉄板、溝付焼き肉プレートが入っているか確認。</p>
-              <p>鉄板の下も確認。</p>
-              <p>ヒーター、真ん中に油受皿が入っているか確認。</p>
-              <p class="highlight">※油受皿は、焼肉の後のお掃除がたいへんなので、アルミホイルを敷いてください。</p>
-            </div>
-          </div>
+      <section class="slide" id="s40">
+        <h3>ホットプレートの中</h3>
+        <div class="slide-image">
+          <img src="images/slide-39.jpg" alt="ホットプレートの中">
+        </div>
+        <div class="slide-text small-text">
+          <p>ホットプレートの中に、平鉄板、溝付焼き肉プレートが入っているか確認。</p>
+          <p>鉄板の下も確認。</p>
+          <p>ヒーター、真ん中に油受皿が入っているか確認。</p>
+          <p class="highlight">※油受皿は、焼肉の後のお掃除がたいへんなので、アルミホイルを敷いてください。</p>
         </div>
       </section>
 
       <!-- スライド 41 -->
-      <section>
-        <div class="slide-wrapper">
-          <h3>コーヒーのセッティング</h3>
-          <div class="slide-content">
-            <div class="slide-image">
-              <img src="images/slide-40.jpg" alt="コーヒーのセッティング">
-            </div>
-            <div class="slide-text small-text">
-              <p>お盆の上に、コーヒーミル、コーヒーサーバー、豆用スプーン、豆、フィルター、ポットをのせる。キッチンカウンターの上にセッティング。</p>
-              <p>コーヒーミルは、水洗いしない。歯ブラシ等で豆だけ払う。濡れてしまうと豆が挽きにくくなる。</p>
-              <p><strong>■4人宿泊の場合</strong><br>フィルターは4枚くらい。豆は、ギリギリ蓋がしまるくらいいっぱいに入れる（いっぱい入れて4杯分）。</p>
-              <p><strong>■4人以上の宿泊の場合</strong><br>フィルター5～6枚。豆は、ギリギリ蓋がしまるくらいいっぱいに入れる（いっぱい入れて4杯分×2ケース）。</p>
-            </div>
-          </div>
+      <section class="slide" id="s41">
+        <h3>コーヒーのセッティング</h3>
+        <div class="slide-image">
+          <img src="images/slide-40.jpg" alt="コーヒーのセッティング">
+        </div>
+        <div class="slide-text small-text">
+          <p>お盆の上に、コーヒーミル、コーヒーサーバー、豆用スプーン、豆、フィルター、ポットをのせる。キッチンカウンターの上にセッティング。</p>
+          <p>コーヒーミルは、水洗いしない。歯ブラシ等で豆だけ払う。濡れてしまうと豆が挽きにくくなる。</p>
+          <p><strong>■4人宿泊の場合</strong><br>フィルターは4枚くらい。豆は、ギリギリ蓋がしまるくらいいっぱいに入れる（いっぱい入れて4杯分）。</p>
+          <p><strong>■4人以上の宿泊の場合</strong><br>フィルター5～6枚。豆は、ギリギリ蓋がしまるくらいいっぱいに入れる（いっぱい入れて4杯分×2ケース）。</p>
         </div>
       </section>
 
       <!-- スライド 42 -->
-      <section>
-        <div class="slide-wrapper">
-          <h3>フィルターの用意</h3>
-          <div class="slide-content">
-            <div class="slide-image">
-              <img src="images/slide-41.jpg" alt="フィルターの用意">
-            </div>
-            <div class="slide-text small-text">
-              <p>コーヒーフィルターは、Ｂ６の袋が備品の中にあります。</p>
-              <p>シールが付いているものは、フィルターに合わせて封をする。袋が少し大きいので、フィルターの大きさで封をしてね。</p>
-              <p>シールが無い場合は、倉庫の備品のセロテープで封をする。</p>
-            </div>
-          </div>
+      <section class="slide" id="s42">
+        <h3>フィルターの用意</h3>
+        <div class="slide-image">
+          <img src="images/slide-41.jpg" alt="フィルターの用意">
+        </div>
+        <div class="slide-text small-text">
+          <p>コーヒーフィルターは、Ｂ６の袋が備品の中にあります。</p>
+          <p>シールが付いているものは、フィルターに合わせて封をする。袋が少し大きいので、フィルターの大きさで封をしてね。</p>
+          <p>シールが無い場合は、倉庫の備品のセロテープで封をする。</p>
         </div>
       </section>
 
       <!-- スライド 43 -->
-      <section>
-        <div class="slide-wrapper">
-          <h3>お茶のセットのセッティング</h3>
-          <div class="slide-content">
-            <div class="slide-image">
-              <img src="images/slide-42.jpg" alt="お茶のセットのセッティング">
-            </div>
-            <div class="slide-text">
-              <p>紅茶パック、お茶パック、砂糖、ミルク、ナッツ</p>
-              <p>各宿泊者の人数分お盆にセットし、キッチンカウンターにセッティングする。</p>
-              <p class="highlight">※砂糖、ミルクは人数分セット用意する。連泊の場合も人数分でOK。</p>
-            </div>
-          </div>
+      <section class="slide" id="s43">
+        <h3>お茶のセットのセッティング</h3>
+        <div class="slide-image">
+          <img src="images/slide-42.jpg" alt="お茶のセットのセッティング">
+        </div>
+        <div class="slide-text">
+          <p>紅茶パック、お茶パック、砂糖、ミルク、ナッツ</p>
+          <p>各宿泊者の人数分お盆にセットし、キッチンカウンターにセッティングする。</p>
+          <p class="highlight">※砂糖、ミルクは人数分セット用意する。連泊の場合も人数分でOK。</p>
         </div>
       </section>
 
       <!-- スライド 44 -->
-      <section>
-        <div class="slide-wrapper">
-          <h3>使い捨てタオル キッチン用</h3>
-          <div class="slide-content">
-            <div class="slide-image">
-              <img src="images/slide-43.jpg" alt="使い捨てタオル キッチン用">
-            </div>
-            <div class="slide-text">
-              <p>キッチンで使用用に、流しにある食器入れに使い捨てタオルを設置（袋に入ったままでOKです）。</p>
-              <p>タオルは、階段下の物置に1枚ずつ個包装の物があります。袋から出さずに、そのままセットしてください。</p>
-            </div>
-          </div>
+      <section class="slide" id="s44">
+        <h3>使い捨てタオル キッチン用</h3>
+        <div class="slide-image">
+          <img src="images/slide-43.jpg" alt="使い捨てタオル キッチン用">
+        </div>
+        <div class="slide-text">
+          <p>キッチンで使用用に、流しにある食器入れに使い捨てタオルを設置（袋に入ったままでOKです）。</p>
+          <p>タオルは、階段下の物置に1枚ずつ個包装の物があります。袋から出さずに、そのままセットしてください。</p>
         </div>
       </section>
 
       <!-- スライド 45 -->
-      <section>
-        <div class="slide-wrapper">
-          <h3>リビング</h3>
-          <div class="slide-content">
-            <div class="slide-image">
-              <img src="images/slide-44.jpg" alt="リビング">
-            </div>
-            <div class="slide-text small-text">
-              <p>ティッシュケース・テレビのリモコンはテレビ台の上に並べて置く。</p>
-              <p>お知らせカードは4枚すべて、テーブルに設置。</p>
-              <p>説明書のファイルもテレビの上に置く。</p>
-              <p>テーブルライトは、充電が終了後、テーブルに置く。</p>
-            </div>
-          </div>
+      <section class="slide" id="s45">
+        <h3>リビング</h3>
+        <div class="slide-image">
+          <img src="images/slide-44.jpg" alt="リビング">
+        </div>
+        <div class="slide-text small-text">
+          <p>ティッシュケース・テレビのリモコンはテレビ台の上に並べて置く。</p>
+          <p>お知らせカードは4枚すべて、テーブルに設置。</p>
+          <p>説明書のファイルもテレビの上に置く。</p>
+          <p>テーブルライトは、充電が終了後、テーブルに置く。</p>
         </div>
       </section>
 
       <!-- スライド 46 -->
-      <section>
-        <div class="slide-wrapper">
-          <h3>使い捨てタオル 2階トイレ用</h3>
-          <div class="slide-content">
-            <div class="slide-image">
-              <img src="images/slide-45.jpg" alt="使い捨てタオル 2階トイレ用">
-            </div>
-            <div class="slide-text">
-              <p>2階のトイレ用に使い捨てタオルを1枚設置お願いします。</p>
-              <p>キッチンと同様、階段下の物入れにある個包装の使い捨てタオルを袋から出さずに設置してください。</p>
-            </div>
-          </div>
+      <section class="slide" id="s46">
+        <h3>使い捨てタオル 2階トイレ用</h3>
+        <div class="slide-image">
+          <img src="images/slide-45.jpg" alt="使い捨てタオル 2階トイレ用">
+        </div>
+        <div class="slide-text">
+          <p>2階のトイレ用に使い捨てタオルを1枚設置お願いします。</p>
+          <p>キッチンと同様、階段下の物入れにある個包装の使い捨てタオルを袋から出さずに設置してください。</p>
         </div>
       </section>
 
       <!-- スライド 47 -->
-      <section>
-        <div class="slide-wrapper">
-          <h3>お風呂の備品1</h3>
-          <div class="slide-content">
-            <div class="slide-image">
-              <img src="images/slide-46.jpg" alt="お風呂の備品1">
-            </div>
-            <div class="slide-text small-text">
-              <p>バスチェア、洗面器、手桶 の3点揃っているか（洗面器、壁掛けに掛けるように変更しています）。</p>
-              <p>水あかは、ぞうきん等でふきとってください。</p>
-              <p>お風呂のバスタブ、床等は水しぶきが残っていないようにふき取ってください。</p>
-              <p>鏡のくもりも無いようにお願いします。</p>
-            </div>
-          </div>
+      <section class="slide" id="s47">
+        <h3>お風呂の備品1</h3>
+        <div class="slide-image">
+          <img src="images/slide-46.jpg" alt="お風呂の備品1">
+        </div>
+        <div class="slide-text small-text">
+          <p>バスチェア、洗面器、手桶 の3点揃っているか（洗面器、壁掛けに掛けるように変更しています）。</p>
+          <p>水あかは、ぞうきん等でふきとってください。</p>
+          <p>お風呂のバスタブ、床等は水しぶきが残っていないようにふき取ってください。</p>
+          <p>鏡のくもりも無いようにお願いします。</p>
         </div>
       </section>
 
       <!-- スライド 48 -->
-      <section>
-        <div class="slide-wrapper">
-          <h3>お風呂の排水口</h3>
-          <div class="slide-content">
-            <div class="slide-image">
-              <img src="images/slide-47.jpg" alt="お風呂の排水口">
-            </div>
-            <div class="slide-text">
-              <p>髪の毛やゴミが溜まりやすく、掃除もしにくいので</p>
-              <p>流しの排水口と同じネットをセットしてください。</p>
-            </div>
-          </div>
+      <section class="slide" id="s48">
+        <h3>お風呂の排水口</h3>
+        <div class="slide-image">
+          <img src="images/slide-47.jpg" alt="お風呂の排水口">
+        </div>
+        <div class="slide-text">
+          <p>髪の毛やゴミが溜まりやすく、掃除もしにくいので</p>
+          <p>流しの排水口と同じネットをセットしてください。</p>
         </div>
       </section>
 
       <!-- スライド 49 -->
-      <section>
-        <div class="slide-wrapper">
-          <h3>お風呂排水口のネットの種類</h3>
-          <div class="slide-content">
-            <div class="slide-image">
-              <img src="images/slide-48.jpg" alt="お風呂排水口のネットの種類">
-            </div>
-            <div class="slide-text">
-              <p>お掃除のカゴの中に、流し排水口、お風呂 と書いたジップロックがあります。</p>
-              <p>その中に入っているネットを使ってください。</p>
-            </div>
-          </div>
+      <section class="slide" id="s49">
+        <h3>お風呂排水口のネットの種類</h3>
+        <div class="slide-image">
+          <img src="images/slide-48.jpg" alt="お風呂排水口のネットの種類">
+        </div>
+        <div class="slide-text">
+          <p>お掃除のカゴの中に、流し排水口、お風呂 と書いたジップロックがあります。</p>
+          <p>その中に入っているネットを使ってください。</p>
         </div>
       </section>
 
       <!-- スライド 50 -->
-      <section>
-        <div class="slide-wrapper">
-          <h3>バスタオル掛け バスマット</h3>
-          <div class="slide-content">
-            <div class="slide-image">
-              <img src="images/slide-49.jpg" alt="バスタオル掛け バスマット">
-            </div>
-            <div class="slide-text">
-              <p>お風呂の入口に置いてあるバスタオル掛け</p>
-              <p>そこに、バスマットをクリーニングの袋から出して掛けてください。</p>
-              <p>バスマットは、階段した物置の、奥の棚においてあります。</p>
-            </div>
-          </div>
+      <section class="slide" id="s50">
+        <h3>バスタオル掛け バスマット</h3>
+        <div class="slide-image">
+          <img src="images/slide-49.jpg" alt="バスタオル掛け バスマット">
+        </div>
+        <div class="slide-text">
+          <p>お風呂の入口に置いてあるバスタオル掛け</p>
+          <p>そこに、バスマットをクリーニングの袋から出して掛けてください。</p>
+          <p>バスマットは、階段した物置の、奥の棚においてあります。</p>
         </div>
       </section>
 
       <!-- スライド 51 -->
-      <section>
-        <div class="slide-wrapper">
-          <h3>お風呂の備品2</h3>
-          <div class="slide-content">
-            <div class="slide-image">
-              <img src="images/slide-50.jpg" alt="お風呂の備品2">
-            </div>
-            <div class="slide-text small-text">
-              <p>シャンプー、コンディショナー、ボディーソープ 3点揃っているか。中身は入っているかチェック。</p>
-              <p>中身は、S1の階段下の箱に入っているので足してください。</p>
-              <p>S2は、階段下の倉庫に、いっぱいに入れた分が2セットあります。</p>
-            </div>
-          </div>
+      <section class="slide" id="s51">
+        <h3>お風呂の備品2</h3>
+        <div class="slide-image">
+          <img src="images/slide-50.jpg" alt="お風呂の備品2">
+        </div>
+        <div class="slide-text small-text">
+          <p>シャンプー、コンディショナー、ボディーソープ 3点揃っているか。中身は入っているかチェック。</p>
+          <p>中身は、S1の階段下の箱に入っているので足してください。</p>
+          <p>S2は、階段下の倉庫に、いっぱいに入れた分が2セットあります。</p>
         </div>
       </section>
 
       <!-- スライド 52 -->
-      <section>
-        <div class="slide-wrapper">
-          <h3>ゴミ箱</h3>
-          <div class="slide-content">
-            <div class="slide-image">
-              <img src="images/slide-51.jpg" alt="ゴミ箱">
-            </div>
-            <div class="slide-text">
-              <p>ゴミ箱はすべてチェック。</p>
-              <p>必ず、10Lの透明ゴミ袋を入れておく。</p>
-              <p>脱衣場のゴミ箱のみ、小さい袋を入れる（掃除道具の中にあります）。</p>
-            </div>
-          </div>
+      <section class="slide" id="s52">
+        <h3>ゴミ箱</h3>
+        <div class="slide-image">
+          <img src="images/slide-51.jpg" alt="ゴミ箱">
+        </div>
+        <div class="slide-text">
+          <p>ゴミ箱はすべてチェック。</p>
+          <p>必ず、10Lの透明ゴミ袋を入れておく。</p>
+          <p>脱衣場のゴミ箱のみ、小さい袋を入れる（掃除道具の中にあります）。</p>
         </div>
       </section>
 
       <!-- スライド 53 -->
-      <section>
-        <div class="slide-wrapper">
-          <h3>トイレットペーパーにシールを貼る</h3>
-          <div class="slide-content">
-            <div class="slide-image">
-              <img src="images/slide-52.jpg" alt="トイレットペーパーにシールを貼る">
-            </div>
-            <div class="slide-text small-text">
-              <p>お掃除セットのかごの中に、長い透明の入れ物に歯ブラシやタワシと一緒に金色のシールを入れています。</p>
-              <p>新しいトイレットペーパーの方にシールを貼って、便器から遠い方に設置してください。</p>
-              <p>もし、お客さんが両方使っていたら、残りが多い方のトイレットペーパーにシールを貼って便器から遠い方に設置してください。</p>
-            </div>
-          </div>
+      <section class="slide" id="s53">
+        <h3>トイレットペーパーにシールを貼る</h3>
+        <div class="slide-image">
+          <img src="images/slide-52.jpg" alt="トイレットペーパーにシールを貼る">
+        </div>
+        <div class="slide-text small-text">
+          <p>お掃除セットのかごの中に、長い透明の入れ物に歯ブラシやタワシと一緒に金色のシールを入れています。</p>
+          <p>新しいトイレットペーパーの方にシールを貼って、便器から遠い方に設置してください。</p>
+          <p>もし、お客さんが両方使っていたら、残りが多い方のトイレットペーパーにシールを貼って便器から遠い方に設置してください。</p>
         </div>
       </section>
 
       <!-- スライド 54 -->
-      <section>
-        <div class="slide-wrapper">
-          <h3>予備のトイレットペーパーの設置の仕方</h3>
-          <div class="slide-content">
-            <div class="slide-image">
-              <img src="images/slide-53.jpg" alt="予備のトイレットペーパーの設置の仕方">
-            </div>
-            <div class="slide-text">
-              <p>予備のトイレットペーパーを設置するときは、端を三角に折って、その先に金のシールを貼っておいてください。</p>
-              <p>手間だと思いますが、お願いします。</p>
-            </div>
-          </div>
+      <section class="slide" id="s54">
+        <h3>予備のトイレットペーパーの設置の仕方</h3>
+        <div class="slide-image">
+          <img src="images/slide-53.jpg" alt="予備のトイレットペーパーの設置の仕方">
+        </div>
+        <div class="slide-text">
+          <p>予備のトイレットペーパーを設置するときは、端を三角に折って、その先に金のシールを貼っておいてください。</p>
+          <p>手間だと思いますが、お願いします。</p>
         </div>
       </section>
 
       <!-- スライド 55 -->
-      <section>
-        <div class="slide-wrapper">
-          <h3>電気等を帰るときにチェック</h3>
-          <div class="slide-content">
-            <div class="slide-image">
-              <img src="images/slide-54.jpg" alt="電気等を帰るときにチェック">
-            </div>
-            <div class="slide-text small-text">
-              <p>帰りに</p>
-              <ul>
-                <li>電気はすべて消す</li>
-                <li>エアコンもすべて消す</li>
-                <li>換気扇は付けて置く</li>
-              </ul>
-              <p>天気が良かったら、1階の入り口側寝室、2階の階段横の窓、ベランダの窓を開ける<br>（開けて帰った時は、必ず連絡お願いします）</p>
-            </div>
-          </div>
+      <section class="slide" id="s55">
+        <h3>電気等を帰るときにチェック</h3>
+        <div class="slide-image">
+          <img src="images/slide-54.jpg" alt="電気等を帰るときにチェック">
+        </div>
+        <div class="slide-text small-text">
+          <p>帰りに</p>
+          <ul>
+            <li>電気はすべて消す</li>
+            <li>エアコンもすべて消す</li>
+            <li>換気扇は付けて置く</li>
+          </ul>
+          <p>天気が良かったら、1階の入り口側寝室、2階の階段横の窓、ベランダの窓を開ける<br>（開けて帰った時は、必ず連絡お願いします）</p>
         </div>
       </section>
 
       <!-- スライド 56: チェックリスト キッチン -->
-      <section>
-        <div class="slide-wrapper">
-          <h3>お掃除チェックリスト：キッチン</h3>
-          <ul class="check-list">
-            <li>食洗器、流し上の洗いカゴにある食器は、元の引き出しに片づける</li>
-            <li>レンジ、炊飯器、オーブン、魚焼き、ティファールの中の汚れが無いか確認、掃除</li>
-            <li>冷蔵庫の中の掃除</li>
-            <li>流し、電気製品の上を拭く（特に指紋をチェック）</li>
-            <li>掃除の最後に流しのシンクの水滴をふき取る</li>
-            <li>キッチンの流しの排水口にゴミが残っていないかチェック</li>
-            <li>食洗器の中の排水口にゴミが残っていないか確認</li>
-            <li>流しは、出来るだけ水しぶきが無いような状態で終わる</li>
-          </ul>
-        </div>
+      <section class="slide" id="s56">
+        <h3>お掃除チェックリスト：キッチン</h3>
+        <ul class="check-list">
+          <li>食洗器、流し上の洗いカゴにある食器は、元の引き出しに片づける</li>
+          <li>レンジ、炊飯器、オーブン、魚焼き、ティファールの中の汚れが無いか確認、掃除</li>
+          <li>冷蔵庫の中の掃除</li>
+          <li>流し、電気製品の上を拭く（特に指紋をチェック）</li>
+          <li>掃除の最後に流しのシンクの水滴をふき取る</li>
+          <li>キッチンの流しの排水口にゴミが残っていないかチェック</li>
+          <li>食洗器の中の排水口にゴミが残っていないか確認</li>
+          <li>流しは、出来るだけ水しぶきが無いような状態で終わる</li>
+        </ul>
       </section>
 
       <!-- スライド 57: チェックリスト リビング -->
-      <section>
-        <div class="slide-wrapper">
-          <h3>お掃除チェックリスト：リビング</h3>
-          <ul class="check-list">
-            <li>テーブル、テレビの誇りを拭く<br>
-              <span style="font-size: 0.8em; color: #555;">(Wi-Fi説明書、近隣お店紹介のカードが並んでいるか確認。インスタ、アンケートのカードが並んでいるか確認)</span>
-            </li>
-            <li>窓、サンの汚れをぞうきん、又はお客様の使った後のタオルでふく</li>
-            <li>網戸、使った後のクイックルワイパーでふく</li>
-            <li>リビング床 掃除機をかける プラス、気になるところは水拭きかクイックルワイパーなど</li>
-            <li>階段の手すりを水拭きする</li>
-          </ul>
-        </div>
+      <section class="slide" id="s57">
+        <h3>お掃除チェックリスト：リビング</h3>
+        <ul class="check-list">
+          <li>テーブル、テレビの誇りを拭く<br>
+            <span style="font-size: 0.85em; color: #555;">(Wi-Fi説明書、近隣お店紹介のカードが並んでいるか確認。インスタ、アンケートのカードが並んでいるか確認)</span>
+          </li>
+          <li>窓、サンの汚れをぞうきん、又はお客様の使った後のタオルでふく</li>
+          <li>網戸、使った後のクイックルワイパーでふく</li>
+          <li>リビング床 掃除機をかける プラス、気になるところは水拭きかクイックルワイパーなど</li>
+          <li>階段の手すりを水拭きする</li>
+        </ul>
       </section>
 
       <!-- スライド 58: チェックリスト トイレ -->
-      <section>
-        <div class="slide-wrapper">
-          <h3>お掃除チェックリスト：トイレ・洗面所</h3>
-          <ul class="check-list">
-            <li>汚物入れの中のチェック 必ず黒い袋を設置する</li>
-            <li>トイレットペーパーの量を確認 必ず1つ予備を置いておく<br>
-              <span style="font-size: 0.8em; color: #555;">(トイレットペーパーは三角に折りこむ)</span>
-            </li>
-            <li>トイレの中の汚れを掃除、流せるトイレシートと、トイレに設置してあるお掃除のノズルで掃除。</li>
-            <li>トイレの便器上、床も拭く</li>
-            <li>洗面所のボウルは、出来るだけ水しぶきが無い状態で終わる</li>
-          </ul>
-        </div>
+      <section class="slide" id="s58">
+        <h3>お掃除チェックリスト：トイレ・洗面所</h3>
+        <ul class="check-list">
+          <li>汚物入れの中のチェック 必ず黒い袋を設置する</li>
+          <li>トイレットペーパーの量を確認 必ず1つ予備を置いておく<br>
+            <span style="font-size: 0.85em; color: #555;">(トイレットペーパーは三角に折りこむ)</span>
+          </li>
+          <li>トイレの中の汚れを掃除、流せるトイレシートと、トイレに設置してあるお掃除のノズルで掃除。</li>
+          <li>トイレの便器上、床も拭く</li>
+          <li>洗面所のボウルは、出来るだけ水しぶきが無い状態で終わる</li>
+        </ul>
       </section>
 
       <!-- スライド 59: チェックリスト お風呂・脱衣場 -->
-      <section>
-        <div class="slide-wrapper">
-          <h3>お掃除チェックリスト：お風呂・脱衣場</h3>
-          <ul class="check-list">
-            <li>使用済みのバスタオル等で水分をふき取る<br>
-              <span style="font-size: 0.8em; color: #555;">(バスタオルは、その後、クリーニングに出します)</span>
-            </li>
-            <li>シャンプー、リンス、ボディーソープの量を確認<br>
-              <span style="font-size: 0.8em; color: #555;">(少なくなっていたら、階段下の物入れにある箱入りの液を追加してください)</span>
-            </li>
-            <li>お風呂の排水口に髪の毛が残っていないか確認</li>
-            <li>洗濯機の中のゴミ、たまっていないか確認</li>
-          </ul>
-        </div>
+      <section class="slide" id="s59">
+        <h3>お掃除チェックリスト：お風呂・脱衣場</h3>
+        <ul class="check-list">
+          <li>使用済みのバスタオル等で水分をふき取る<br>
+            <span style="font-size: 0.85em; color: #555;">(バスタオルは、その後、クリーニングに出します)</span>
+          </li>
+          <li>シャンプー、リンス、ボディーソープの量を確認<br>
+            <span style="font-size: 0.85em; color: #555;">(少なくなっていたら、階段下の物入れにある箱入りの液を追加してください)</span>
+          </li>
+          <li>お風呂の排水口に髪の毛が残っていないか確認</li>
+          <li>洗濯機の中のゴミ、たまっていないか確認</li>
+        </ul>
       </section>
 
       <!-- スライド 60: チェックリスト 寝室 -->
-      <section>
-        <div class="slide-wrapper">
-          <h3>お掃除チェックリスト：寝室</h3>
-          <ul class="check-list">
-            <li>ベッドメイキング、掛け布団は折りたたまずに、伸ばしておく</li>
-            <li>ゴミ箱の中は空になっているか確認、20Ｌ用の袋が入っているか確認</li>
-            <li>床は掃除機をかける</li>
-            <li>エアコンは消しておく、換気扇は回す</li>
-            <li>物入のカギは必ず施錠する</li>
-            <li>次の宿泊予定を見て、ベッドのセッティングの数を確認する</li>
-          </ul>
-        </div>
+      <section class="slide" id="s60">
+        <h3>お掃除チェックリスト：寝室</h3>
+        <ul class="check-list">
+          <li>ベッドメイキング、掛け布団は折りたたまずに、伸ばしておく</li>
+          <li>ゴミ箱の中は空になっているか確認、20Ｌ用の袋が入っているか確認</li>
+          <li>床は掃除機をかける</li>
+          <li>エアコンは消しておく、換気扇は回す</li>
+          <li>物入のカギは必ず施錠する</li>
+          <li>次の宿泊予定を見て、ベッドのセッティングの数を確認する</li>
+        </ul>
       </section>
 
       <!-- スライド 61: チェックリスト 玄関外 -->
-      <section>
-        <div class="slide-wrapper">
-          <h3>お掃除チェックリスト：玄関外</h3>
-          <ul class="check-list">
-            <li>外の落ち葉等は掃除をする（ゴミボックスの奥にほうきと塵取りがあります）</li>
-            <li>玄関扉の壁、窓、サッシ等の汚れを確認</li>
-          </ul>
-        </div>
+      <section class="slide" id="s61">
+        <h3>お掃除チェックリスト：玄関外</h3>
+        <ul class="check-list">
+          <li>外の落ち葉等は掃除をする（ゴミボックスの奥にほうきと塵取りがあります）</li>
+          <li>玄関扉の壁、窓、サッシ等の汚れを確認</li>
+        </ul>
       </section>
 
       <!-- スライド 62: チェックリスト その他 -->
-      <section>
-        <div class="slide-wrapper">
-          <h3>お掃除チェックリスト：その他</h3>
-          <ul class="check-list small-text">
-            <li>ゴミは、燃えるゴミ、缶、ビンを分けて、分別はしますが、袋はすべて黄色い金田組の袋に入れる。<br>
-              <span style="font-size: 0.8em; color: #555;">袋は必ず結ぶかガムテープで貼り、Ｓ１とＳ２の間にあるゴミ箱に入れておく。<br>
-              ※量に関係なく回収されるため、少ない場合は透明の袋に入れてゴミ箱に入れる。</span>
-            </li>
-            <li>バスタオルはクリーニングに出すが、フェイスタオルは使い捨て。お掃除等に使ってから燃えるゴミと一緒に処分する。</li>
-            <li>バスタオル、ベッド・布団カバー類、ねまき（ガウン）はそれぞれ3種類に袋を分けてクリーニングに出す。</li>
-          </ul>
-        </div>
+      <section class="slide" id="s62">
+        <h3>お掃除チェックリスト：その他</h3>
+        <ul class="check-list small-text">
+          <li>ゴミは、燃えるゴミ、缶、ビンを分けて、分別はしますが、袋はすべて黄色い金田組の袋に入れる。<br>
+            <span style="font-size: 0.85em; color: #555;">袋は必ず結ぶかガムテープで貼り、Ｓ１とＳ２の間にあるゴミ箱に入れておく。<br>
+            ※量に関係なく回収されるため、少ない場合は透明の袋に入れてゴミ箱に入れる。</span>
+          </li>
+          <li>バスタオルはクリーニングに出すが、フェイスタオルは使い捨て。お掃除等に使ってから燃えるゴミと一緒に処分する。</li>
+          <li>バスタオル、ベッド・布団カバー類、ねまき（ガウン）はそれぞれ3種類に袋を分けてクリーニングに出す。</li>
+        </ul>
       </section>
 
       <!-- スライド 63: 宿泊者の前日に用意する事 -->
-      <section>
-        <div class="slide-wrapper">
-          <h3>宿泊者の前日に用意する事</h3>
-          <ul class="check-list small-text">
-            <li><strong>「玄関ドア横」</strong>玄関・外部の照明をつける</li>
-            <li><strong>「ローカ」</strong>一番奥の照明 つける</li>
-            <li><strong>「寝室」</strong>間接照明（明るさは中間）、エアコン24度（季節で調整）、換気扇消す、窓閉まっているか確認</li>
-            <li><strong>2階「キッチン」</strong>給湯器つける、45度</li>
-            <li><strong>「トイレ横の壁」</strong>ベランダの照明、間接照明つける</li>
-            <li><strong>「テレビ横」</strong>間接照明つける、天井のファン回す、エアコンつける24度（季節で調整）</li>
-          </ul>
-        </div>
+      <section class="slide" id="s63">
+        <h3>宿泊者の前日に用意する事</h3>
+        <ul class="check-list small-text">
+          <li><strong>「玄関ドア横」</strong>玄関・外部の照明をつける</li>
+          <li><strong>「ローカ」</strong>一番奥の照明 つける</li>
+          <li><strong>「寝室」</strong>間接照明（明るさは中間）、エアコン24度（季節で調整）、換気扇消す、窓閉まっているか確認</li>
+          <li><strong>2階「キッチン」</strong>給湯器つける、45度</li>
+          <li><strong>「トイレ横の壁」</strong>ベランダの照明、間接照明つける</li>
+          <li><strong>「テレビ横」</strong>間接照明つける、天井のファン回す、エアコンつける24度（季節で調整）</li>
+        </ul>
       </section>
 
-      <!-- スライド 64: フッター -->
-      <section>
-        <div class="slide-wrapper center-content">
-          <h2>お疲れ様でした！</h2>
-          <div class="footer-note">Copyright 2023 fukunaga@himejistyle.jp</div>
-        </div>
+      <!-- フッター -->
+      <section class="slide center" id="s64">
+        <h2>お疲れ様でした！</h2>
+        <div class="footer-note">Copyright 2023 fukunaga@himejistyle.jp</div>
       </section>
 
-    </div>
+    </main>
+
+    <button id="to-top" aria-label="ページ先頭へ戻る">↑</button>
   </div>
-  </div> <!-- main-contentの閉じタグ -->
 
-  <!-- Reveal.js JavaScript -->
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/4.3.1/reveal.min.js"></script>
   <script>
-    // パスワード設定
+    // パスワード
     const CORRECT_PASS = "5963";
 
-    // ページ更新時に再入力を省くためのセッション確認
     if (sessionStorage.getItem("besso_auth") === "true") {
       showManual();
     }
 
-    // 「確認」ボタンが押されたときの処理
     document.getElementById("password-submit").addEventListener("click", checkPassword);
-    
-    // スマホのキーボードで「確定(Enter)」を押したときの処理
     document.getElementById("password-input").addEventListener("keypress", function(e) {
       if (e.key === "Enter") checkPassword();
     });
@@ -1423,7 +1212,7 @@
     function checkPassword() {
       const input = document.getElementById("password-input").value;
       if (input === CORRECT_PASS) {
-        sessionStorage.setItem("besso_auth", "true"); // 認証状態を保存
+        sessionStorage.setItem("besso_auth", "true");
         showManual();
       } else {
         document.getElementById("password-error").style.display = "block";
@@ -1431,55 +1220,60 @@
     }
 
     function showManual() {
-      // パスワード画面を隠してメインコンテンツを表示
       document.getElementById("password-screen").style.display = "none";
       document.getElementById("main-content").style.display = "block";
 
-      // コンテンツ表示後にReveal.jsを初期化
-      Reveal.initialize({
-        hash: false,
-        slideNumber: 'c/t',
-        width: "100%",
-        height: "100%",
-        margin: 0,
-        minScale: 1,
-        maxScale: 1,
-        center: false // trueにすると文字の開始位置がずれるためfalseに設定
-      });
-
-      // 目次を自動生成し、クリックで該当スライドへ移動する処理
+      // 目次自動生成
       const tocList = document.getElementById('toc-list');
-      const sections = document.querySelectorAll('.reveal .slides > section');
-      
-      sections.forEach((section, index) => {
-        // 各スライドの見出し（h2 または h3）を取得
-        const heading = section.querySelector('h2, h3');
-        if (heading) {
+      const slides = document.querySelectorAll('.manual-body .slide');
+
+      slides.forEach((slide) => {
+        const heading = slide.querySelector('h2, h3');
+        const id = slide.id;
+        if (heading && id) {
           const li = document.createElement('li');
           const a = document.createElement('a');
-          a.href = 'javascript:void(0);';
-          // スライド番号と見出しテキストを目次にする
-          a.textContent = `${index + 1}. ${heading.textContent.replace('お掃除チェックリスト：', '')}`;
-          
-          // 目次クリック時の処理
-          a.addEventListener('click', (e) => {
-            e.preventDefault();
-            Reveal.slide(index); // 該当のスライドにジャンプ
-            document.getElementById('toc-menu').classList.remove('open'); // メニューを閉じる
+          a.href = '#' + id;
+          a.textContent = heading.textContent.replace('お掃除チェックリスト：', '');
+          a.addEventListener('click', () => {
+            closeToc();
           });
-          
           li.appendChild(a);
           tocList.appendChild(li);
         }
       });
 
-      // メニューの開閉イベント
+      // メニュー開閉
+      const tocMenu = document.getElementById('toc-menu');
+      const tocBackdrop = document.getElementById('toc-backdrop');
+
       document.getElementById('toc-button').addEventListener('click', () => {
-        document.getElementById('toc-menu').classList.add('open');
+        tocMenu.classList.add('open');
+        tocBackdrop.classList.add('open');
       });
-      document.getElementById('toc-close').addEventListener('click', () => {
-        document.getElementById('toc-menu').classList.remove('open');
+      document.getElementById('toc-close').addEventListener('click', closeToc);
+      tocBackdrop.addEventListener('click', closeToc);
+
+      function closeToc() {
+        tocMenu.classList.remove('open');
+        tocBackdrop.classList.remove('open');
+      }
+
+      // ページ先頭ボタン
+      const toTopBtn = document.getElementById('to-top');
+      window.addEventListener('scroll', () => {
+        if (window.scrollY > 400) {
+          toTopBtn.classList.add('show');
+        } else {
+          toTopBtn.classList.remove('show');
+        }
       });
+      toTopBtn.addEventListener('click', () => {
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+      });
+
+      // スムーズスクロール（CSSのscroll-behaviorで効くが、念のため）
+      document.documentElement.style.scrollBehavior = 'smooth';
     }
   </script>
 </body>
